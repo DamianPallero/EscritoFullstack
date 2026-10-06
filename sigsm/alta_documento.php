@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fecha = $_POST['fecha_emision'] ?? '';
     $ruta = trim($_POST['ruta_archivo'] ?? '');
 
-    // STRICT VALIDATIONS
     if ($titulo === '' || strlen($titulo) > 150) {
         $errors[] = "El título es obligatorio y no puede superar los 150 caracteres.";
     }
