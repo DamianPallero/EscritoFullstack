@@ -16,7 +16,6 @@ if (!$doc) {
 }
 
 $errors = [];
-// Retain data: use POST if submitted, otherwise use DB data
 $titulo = $_POST['titulo'] ?? $doc['titulo'];
 $tipo = $_POST['tipo'] ?? $doc['tipo'];
 $cedula = $_POST['cedula_paciente'] ?? $doc['cedula_paciente'];
@@ -57,8 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) {
-                // If the route belongs to another document, it's an error. 
-                // If it's the same document, it's fine, but PDO throws it anyway if UNIQUE is hit.
                 $errors[] = "La ruta del archivo ya existe en otro documento.";
             } else {
                 $errors[] = "Error de base de datos: " . $e->getMessage();

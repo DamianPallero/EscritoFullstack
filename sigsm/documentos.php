@@ -68,7 +68,6 @@ $ok = $_GET['ok'] ?? null;
                             <td class="text-end pe-3">
                                 <a href="editar_documento.php?id=<?= (int)$doc['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
                                 
-                                <!-- CHANGED TO POST FORM AS REQUIRED -->
                                 <form method="POST" action="bajar_documento.php" style="display:inline;" onsubmit="return confirm('¿Está seguro de dar de baja este documento?');">
                                     <input type="hidden" name="id" value="<?= (int)$doc['id'] ?>">
                                     <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
